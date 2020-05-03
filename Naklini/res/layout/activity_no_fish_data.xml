@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#A0DADB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".nofish.activity.NoFishData"
+    >
+   <!--툴바-->
+   <TextView
+       android:id="@+id/textView"
+       android:background="#A0DADB"
+       android:textAlignment="center"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="금어기 데이터"
+       android:textSize="20sp"
+       android:textAppearance="@style/TextAppearance.AppCompat.Large"
+       android:fontFamily="@font/bmjua"
+       android:gravity="center_horizontal"
+       android:layout_margin="15dp"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="#FF6600"
+       android:paddingTop="10dp"
+       android:paddingBottom="10dp"
+       android:paddingLeft="30dp"
+       android:paddingRight="30dp"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp">
+   <!--이전버튼-->
+      <ImageView
+          android:id="@+id/cal_prev_btn"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_alignParentLeft="true"
+          android:layout_centerVertical="true"
+          android:onClick="onClick"
+          app:srcCompat="@android:drawable/ic_media_previous" />
+   <!--현재 년월-->
+      <TextView
+          android:id="@+id/cal_date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_toLeftOf="@+id/cal_next_btn"
+          android:layout_toRightOf="@+id/cal_prev_btn"
+          android:fontFamily="@font/bmjua"
+          android:gravity="center"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="#FEE6CE" />
+   <!--다음버튼-->
+      <ImageView
+          android:id="@+id/cal_next_btn"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:onClick="onClick"
+          app:srcCompat="@android:drawable/ic_media_next" />
+   </RelativeLayout>
+
+   <!--메인뷰 : 요일 -->
+   <LinearLayout
+       android:id="@+id/cal_header"
+       android:layout_width="match_parent"
+       android:layout_height="25dp"
+       android:layout_gravity="center_vertical"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"
+       android:background="#32000000"
+       android:orientation="horizontal">
+
+      <TextView
+          android:id="@+id/sun"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="일"
+          android:textColor="#FF1717" />
+
+      <TextView
+          android:id="@+id/mon"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="월"
+          android:textColor="#222222" />
+
+      <TextView
+          android:id="@+id/tues"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="화"
+          android:textColor="#222222" />
+
+      <TextView
+          android:id="@+id/wen"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="수"
+          android:textColor="#222222" />
+
+      <TextView
+          android:id="@+id/thu"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="목"
+          android:textColor="#222222" />
+
+      <TextView
+          android:id="@+id/fri"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="금"
+          android:textColor="#222222" />
+
+      <TextView
+          android:id="@+id/sat"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="1"
+          android:text="토"
+          android:textColor="#3D5AFE" />
+
+   </LinearLayout>
+
+   <GridView
+       android:id="@+id/calendar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center_vertical"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:background="#FFFFFF"
+       android:numColumns="7"
+       />
+   <LinearLayout
+       android:id="@+id/recycle_layout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+      android:orientation="vertical">
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/detail"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:background="#FFFFFF"
+          />
+   </LinearLayout>
+
+</LinearLayout>

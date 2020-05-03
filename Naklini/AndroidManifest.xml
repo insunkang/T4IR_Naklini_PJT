@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.tensorflow.demo">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="낚린이"
+        android:theme="@style/Theme.AppCompat">
+        <activity android:name=".mappoint.Point1"/>
+        <activity android:name=".mappoint.Point2"/>
+        <activity android:name=".Yolo.YoloResultActivity"/>
+        <activity android:name=".DetectorActivity"/>
+        <activity android:name=".Yolo.YoloMainActivity"/>
+        <activity android:name=".nofish.activity.NoFishData"/>
+        <activity android:name=".nofish.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+    </application>
+
+</manifest>
