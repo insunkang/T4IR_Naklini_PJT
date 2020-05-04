@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Sea implements Parcelable {
-    int _id;
-    String name;
-    String addr;
-    String target;
+    public int _id;
+    public String name;
+    public String addr;
+    public String target;
 
     public Sea(int _id, String name, String addr, String target) {
         this._id = _id;

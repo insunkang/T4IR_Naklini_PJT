@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Rock implements Parcelable {
-    int _id;
-    String name;
-    String point_nm;
-    String dpwt; // 깊이
-    String material;
-    String tide_time;
-    String target;
-    String latitude;
-    String longitude;
-    String adr_knm; // 주소
+    public int _id;
+    public String name;
+    public String point_nm;
+    public String dpwt; // 깊이
+    public String material;
+    public String tide_time;
+    public String target;
+    public String latitude;
+    public String longitude;
+    public String adr_knm; // 주소
 
     public Rock(int _id, String name, String point_nm, String dpwt, String material, String tide_time, String target, String latitude, String longitude, String adr_knm) {
         this._id = _id;

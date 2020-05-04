@@ -21,13 +21,6 @@ public class SIGUNGU implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(_id);
-        dest.writeString(SIGUNGU);
-        dest.writeInt(SIDO_id);
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -43,6 +36,15 @@ public class SIGUNGU implements Parcelable {
             return new SIGUNGU[size];
         }
     };
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(_id);
+        dest.writeString(SIGUNGU);
+        dest.writeInt(SIDO_id);
+    }
+
+
 
     @Override
     public String toString() {

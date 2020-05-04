@@ -17,6 +17,7 @@ public class SIDO implements Parcelable {
         SIDO = in.readString();
     }
 
+
     public static final Creator<SIDO> CREATOR = new Creator<SIDO>() {
         @Override
         public SIDO createFromParcel(Parcel in) {

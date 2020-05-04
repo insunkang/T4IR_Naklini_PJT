@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.Yolo.YoloMainActivity;
-import org.tensorflow.demo.mappoint.Point1;
+import org.tensorflow.demo.map.map;
 import org.tensorflow.demo.tip.TIPActivity;
 
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         mapdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Point1.class);
+                Intent intent = new Intent(MainActivity.this, map.class);
                 startActivity(intent);
             }
         });
