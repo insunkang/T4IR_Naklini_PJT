@@ -67,7 +67,8 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="org.tensorflow.demo.tip.fragment.Link"/>
+        android:name="org.tensorflow.demo.tip.fragment.Link"
+        />
 
     </FrameLayout>
 

@@ -20,21 +20,21 @@
         android:supportsRtl="true"
         android:theme="@style/App_Theme">
         <activity android:name=".tip.TIPActivity"/>
-        <activity android:name=".mappoint.Point1"/>
-        <activity android:name=".mappoint.Point2"/>
-        <activity android:name=".Yolo.YoloResultActivity"/>
-        <activity android:name=".DetectorActivity"/>
-        <activity android:name=".Yolo.YoloMainActivity"/>
-        <activity android:name=".nofish.activity.NoFishData"/>
-        <activity android:name=".nofish.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <activity android:name=".mappoint.Point1"/>
+    <activity android:name=".mappoint.Point2"/>
+    <activity android:name=".Yolo.YoloResultActivity"/>
+    <activity android:name=".DetectorActivity"/>
+    <activity android:name=".Yolo.YoloMainActivity"/>
+    <activity android:name=".nofish.activity.NoFishData"/>
+    <activity android:name=".nofish.activity.MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
 
 
-    </application>
+</application>
 
 </manifest>
