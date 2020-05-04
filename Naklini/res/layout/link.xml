@@ -5,16 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/youtubebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
             android:layout_margin="15dp"
+            android:padding="20dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
-            android:layout_weight="1"
 
             >
 
@@ -27,11 +30,10 @@
                     android:id="@+id/youtube"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    app:srcCompat="@drawable/youtube"
-                    android:scaleType="fitXY"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    />
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/youtube" />
 
                 <TextView
                     android:id="@+id/youtubetext"
@@ -41,11 +43,378 @@
                     android:fontFamily="@font/bmjua"
                     android:gravity="center"
                     android:text="YouTube 바로가기"
-                    android:textSize="30dp"
-                    android:textColor="#FF6600" />
+                    android:textColor="#FF6600"
+                    android:textSize="30dp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#FEE6CE"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/you_century"
+                            android:src="@drawable/jin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:scaleType="fitXY" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="이름"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/name_century"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="진석기시대"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="구독자수"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/sub_count"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="22.4만명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="설명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/context_century"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="직접 잡은 낚싯감으로 상상도 못할 음식을 만들어내는 YouTube"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#FEE6CE"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/you_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:src="@drawable/ftv"
+                            android:scaleType="fitXY" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="이름"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/fish_country_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="한국낚시채널 FTV"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="구독자수"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/distribution"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="4.42만명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="설명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/habitat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="대한민국 No.1 낚시전문채널 FTV 공식 YouTube"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#FEE6CE"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/you_family"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:src="@drawable/dalbong"
+                            android:scaleType="fitXY" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="이름"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/name_family"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="달봉이네 가족 낚시이야기"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="구독자수"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/sub_family"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="1.16만명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="설명"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#FF6600"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/context_family"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/bmjua"
+                                    android:text="가족들과 함께하는 낚시 YouTube"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                    android:textColor="#CC000000"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
 
 
 </FrameLayout>

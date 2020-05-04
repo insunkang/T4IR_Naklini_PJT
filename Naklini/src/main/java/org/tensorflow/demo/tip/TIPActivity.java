@@ -25,7 +25,6 @@ public class TIPActivity extends AppCompatActivity implements View.OnClickListen
     Preparation preparation;
     Bait bait;
     Sort sort;
-    Link link;
     @Override
         protected void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
