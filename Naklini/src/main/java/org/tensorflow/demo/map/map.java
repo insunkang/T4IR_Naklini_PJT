@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +26,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
@@ -46,6 +46,7 @@ import org.tensorflow.demo.map.db.Freshwater;
 import org.tensorflow.demo.map.db.Onboard;
 import org.tensorflow.demo.map.db.Rock;
 import org.tensorflow.demo.map.db.Sea;
+import org.tensorflow.demo.mappoint.DBHandler;
 import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
 import org.tensorflow.demo.mappoint.Point1;
@@ -97,6 +98,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         }else{
             init();
         }
+        DBHandler handler = DBHandler.open(this);
         // TODO: 연결- Point ==============================================================================
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override

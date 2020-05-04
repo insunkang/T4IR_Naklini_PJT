@@ -64,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_navi,menu);
-        MenuItem searchbar = menu.findItem(R.id.searchbar);
-        SearchView searchView = (SearchView)searchbar.getActionView();
-        searchView.setQueryHint("검색어를 입력하세요");
         return true;
     }
 
