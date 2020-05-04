@@ -1,5 +1,6 @@
 package org.tensorflow.demo.tip;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ import org.tensorflow.demo.tip.fragment.Preparation;
 import org.tensorflow.demo.tip.fragment.Rod;
 import org.tensorflow.demo.tip.fragment.Sort;
 
-public class TIPActivity extends AppCompatActivity{
+public class TIPActivity extends AppCompatActivity implements View.OnClickListener {
     Button rod_btn;
     Button pre_btn;
     Button bait_btn;
@@ -57,6 +58,7 @@ public class TIPActivity extends AppCompatActivity{
                         setFragment("sort");
                     }
             });
+            findViewById(R.id.youtubebar).setOnClickListener(this);
 
 
 
@@ -83,6 +85,16 @@ public class TIPActivity extends AppCompatActivity{
                 transaction.replace(R.id.frameframe,sort);
         }
         transaction.commit();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.youtubebar){
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 }
 

@@ -81,19 +81,24 @@ public class NoFishData extends AppCompatActivity implements View.OnClickListene
                 db.close();
                 //금어기 상세 데이터
                 detail = (RecyclerView) findViewById(R.id.detail);
-                for(int i = 0; i<dateList.size(); i++){
-                        Detail_data detail_data = new Detail_data();
-                        detail_data.setTitle("어종 : "+dateList.get(i).getTitle());
-                        Log.d("gettitle","어종 : "+dateList.get(i).getTitle());
-                        detail_data.setStart_date("금어기 시작 : "+dateList.get(i).getStart_month()+" / "+dateList.get(i).getStart_day());
-                        detail_data.setFinish_date("금어기 종료 : "+dateList.get(i).getFinish_month()+" / "+dateList.get(i).getFinish_day());
-                        detailList.add(detail_data);
+                detailList.clear();
+                for (int i = 1; i < dateList.size(); i++) {
+                        if(month==Integer.parseInt(dateList.get(i).getStart_month()) ||
+                                month==Integer.parseInt(dateList.get(i).getFinish_month())) {
+                                Detail_data detail_data = new Detail_data();
+                                detail_data.setTitle(dateList.get(i).getTitle());
+                                detail_data.setStart_month(dateList.get(i).getStart_month());
+                                detail_data.setStart_day(dateList.get(i).getStart_day());
+                                detail_data.setFinish_month(dateList.get(i).getFinish_month());
+                                detail_data.setFinish_day(dateList.get(i).getFinish_day());
+                                detailList.add(detail_data);
+                        }
                 }
                 //어댑터
                 adapter2 = new NoFishDetailAdapter(mContext,R.layout.detail,detailList);
                 LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
                 detail.setLayoutManager(manager);
-                //detail.setAdapter(adapter2);
+                detail.setAdapter(adapter2);
 
                 adapter = new NoFishAdapter(mContext, calList, dateList);
                 adapter.notifyDataSetChanged();
@@ -150,6 +155,20 @@ public class NoFishData extends AppCompatActivity implements View.OnClickListene
                 adapter.notifyDataSetChanged();
                 calendarView.setAdapter(adapter);
                 currentMonth.setText(year + "년 " + month + "월");
+                detailList.clear();
+                for (int i = 1; i < dateList.size(); i++) {
+                        if(month==Integer.parseInt(dateList.get(i).getStart_month()) ||
+                                month==Integer.parseInt(dateList.get(i).getFinish_month())) {
+                                Detail_data detail_data = new Detail_data();
+                                detail_data.setTitle(dateList.get(i).getTitle());
+                                detail_data.setStart_month(dateList.get(i).getStart_month());
+                                detail_data.setStart_day(dateList.get(i).getStart_day());
+                                detail_data.setFinish_month(dateList.get(i).getFinish_month());
+                                detail_data.setFinish_day(dateList.get(i).getFinish_day());
+                                detailList.add(detail_data);
+                        }
+                }
+                detail.setAdapter(adapter2);
         }
 
         public void CalendarList(int CurrentMonth, int year) {
