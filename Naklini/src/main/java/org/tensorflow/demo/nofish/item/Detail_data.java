@@ -1,17 +1,21 @@
 package org.tensorflow.demo.nofish.item;
-
 public class Detail_data {
     String title;
-    String start_date;
-    String finish_date;
+    String start_month;
+    String start_day;
+    String finish_month;
+    String finish_day;
 
     public Detail_data(){
 
     }
-    public Detail_data(String title, String start_date, String finish_date) {
+
+    public Detail_data(String title, String start_month, String start_day, String finish_month, String finish_day) {
         this.title = title;
-        this.start_date = start_date;
-        this.finish_date = finish_date;
+        this.start_month = start_month;
+        this.start_day = start_day;
+        this.finish_month = finish_month;
+        this.finish_day = finish_day;
     }
 
     public String getTitle() {
@@ -22,28 +26,35 @@ public class Detail_data {
         this.title = title;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getStart_month() {
+        return start_month;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setStart_month(String start_month) {
+        this.start_month = start_month;
     }
 
-    public String getFinish_date() {
-        return finish_date;
+    public String getStart_day() {
+        return start_day;
     }
 
-    public void setFinish_date(String finish_date) {
-        this.finish_date = finish_date;
+    public void setStart_day(String start_day) {
+        this.start_day = start_day;
     }
 
-    @Override
-    public String toString() {
-        return "Detail_data{" +
-                "title='" + title + '\'' +
-                ", start_date='" + start_date + '\'' +
-                ", finish_date='" + finish_date + '\'' +
-                '}';
+    public String getFinish_month() {
+        return finish_month;
+    }
+
+    public void setFinish_month(String finish_month) {
+        this.finish_month = finish_month;
+    }
+
+    public String getFinish_day() {
+        return finish_day;
+    }
+
+    public void setFinish_day(String finish_day) {
+        this.finish_day = finish_day;
     }
 }

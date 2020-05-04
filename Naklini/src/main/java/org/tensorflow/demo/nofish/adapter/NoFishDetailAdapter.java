@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.tensorflow.demo.R;
+import org.tensorflow.demo.nofish.item.Calendar_data;
+import org.tensorflow.demo.nofish.item.Date_data;
 import org.tensorflow.demo.nofish.item.Detail_data;
 
 import java.util.ArrayList;
@@ -20,11 +22,15 @@ public class NoFishDetailAdapter extends RecyclerView.Adapter<NoFishDetailAdapte
     Context mContext;
     int row_res_id;
     final ArrayList<Detail_data> detailList;
+    ArrayList<Calendar_data> calList;
+    ArrayList<Date_data> dateList;
+
 
     public NoFishDetailAdapter(Context context, int row_res_id,ArrayList<Detail_data> detailList){
-            mContext =context;
-            this.row_res_id = row_res_id;
-            this.detailList = detailList;
+        mContext =context;
+        this.row_res_id = row_res_id;
+        this.detailList = detailList;
+
     }
 
     @NonNull
@@ -40,9 +46,12 @@ public class NoFishDetailAdapter extends RecyclerView.Adapter<NoFishDetailAdapte
         TextView start = holder.start;
         TextView finish = holder.finish;
         title.setText(detailList.get(position).getTitle());
-        start.setText(detailList.get(position).getStart_date());
-        finish.setText(detailList.get(position).getFinish_date());
+        start.setText(detailList.get(position).getStart_month() + "월" + detailList.get(position).getStart_day() + "일");
+        finish.setText(detailList.get(position).getFinish_month() + "월" + detailList.get(position).getFinish_day() + "일");
+
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -58,7 +67,7 @@ public class NoFishDetailAdapter extends RecyclerView.Adapter<NoFishDetailAdapte
             super(itemView);
             title = itemView.findViewById(R.id.detail_title);
             start = itemView.findViewById(R.id.detail_start);
-            finish = itemView.findViewById(R.id.detail_finish);
+            finish = itemView.findViewById(R.id.detail_stop);
         }
     }
 }
