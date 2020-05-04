@@ -14,16 +14,19 @@ import androidx.cardview.widget.CardView;
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.Yolo.YoloMainActivity;
 import org.tensorflow.demo.mappoint.Point1;
+import org.tensorflow.demo.tip.TIPActivity;
 
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nofish_activity_main);
         CardView nofishdata = (CardView) findViewById(R.id.stopdate);
         CardView detectdata = (CardView) findViewById(R.id.searchbar);
-        CardView mapdata = findViewById(R.id.map);
+        CardView mapdata = (CardView) findViewById(R.id.map);
+        CardView tip = (CardView) findViewById(R.id.howfish);
 
         mapdata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,10 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         nofishdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NoFishData.class);
+                startActivity(intent);
+            }
+        });
+        tip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TIPActivity.class);
                 startActivity(intent);
             }
         });
