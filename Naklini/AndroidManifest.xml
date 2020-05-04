@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tensorflow.demo">
+    package="org.tensorflow.demo"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
 
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -9,12 +12,14 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="낚린이"
-        android:theme="@style/Theme.AppCompat">
+        android:label="@string/name"
+        android:supportsRtl="true"
+        android:theme="@style/App_Theme">
+        <activity android:name=".tip.TIPActivity"/>
         <activity android:name=".mappoint.Point1"/>
         <activity android:name=".mappoint.Point2"/>
         <activity android:name=".Yolo.YoloResultActivity"/>
@@ -28,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
 
     </application>
