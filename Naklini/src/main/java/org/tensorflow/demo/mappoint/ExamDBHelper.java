@@ -15,7 +15,7 @@ public class ExamDBHelper extends SQLiteOpenHelper {
 
     private final Context context;
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "fishing.db";
+    private static final String DATABASE_NAME = "fishing2.db";
 
     private boolean createDb = false, upgradeDb = false;
 
@@ -37,7 +37,7 @@ public class ExamDBHelper extends SQLiteOpenHelper {
         OutputStream myOutput = null;
         try {
             // Open db packaged as asset as the input stream
-            myInput = context.getAssets().open("fishing.db");
+            myInput = context.getAssets().open("fishing2.db");
 
             // Open the db in the application package context:
             myOutput = new FileOutputStream(db.getPath());

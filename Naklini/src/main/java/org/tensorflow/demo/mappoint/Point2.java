@@ -2,6 +2,7 @@ package org.tensorflow.demo.mappoint;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +21,6 @@ import java.util.HashMap;
 
 
 public class Point2 extends AppCompatActivity {
-    public static final String ROOT_DIR = "/data/data/org.tensorflow.demo/databases/";
     DBHandler handler;
     // 화면 하나당 프래그먼트 1개씩 필요
     TextView categoryView;
@@ -177,6 +177,7 @@ public class Point2 extends AppCompatActivity {
                     new int[]{android.R.id.text1}
             );
             listview.setAdapter(adapter);
+            listview.setEnabled(false); // 리스트뷰 클릭 못함
             return;
         }
         // 리스트뷰 출력용
@@ -195,6 +196,7 @@ public class Point2 extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
         listview.setAdapter(adapter);
+        listview.setEnabled(true);
         listview.setOnItemClickListener(new ListItemClick());
     }
 
@@ -208,12 +210,13 @@ public class Point2 extends AppCompatActivity {
                     new int[]{android.R.id.text1}
             );
             listview.setAdapter(adapter);
+            listview.setEnabled(false);
             return;
         }
         // 리스트뷰 출력용
         list = new ArrayList<>();
         HashMap<String, String> map = null;
-        for (OnBoard point : Onboardlist) {
+        for (Rock point : Rocklist) {
             map = new HashMap<String, String>();
             map.put("id", point._id + "");
             map.put("name", point.point_nm + "");
@@ -226,6 +229,7 @@ public class Point2 extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
         listview.setAdapter(adapter);
+        listview.setEnabled(true);
         listview.setOnItemClickListener(new ListItemClick());
     }
 
@@ -239,6 +243,7 @@ public class Point2 extends AppCompatActivity {
                     new int[]{android.R.id.text1}
             );
             listview.setAdapter(adapter);
+            listview.setEnabled(false);
             return;
         }
         // 리스트뷰 출력용
@@ -257,6 +262,7 @@ public class Point2 extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
         listview.setAdapter(adapter);
+        listview.setEnabled(true);
         listview.setOnItemClickListener(new ListItemClick());
     }
 
@@ -270,6 +276,7 @@ public class Point2 extends AppCompatActivity {
                     new int[]{android.R.id.text1}
             );
             listview.setAdapter(adapter);
+            listview.setEnabled(false);
             return;
         }
         // 리스트뷰 출력용
@@ -288,50 +295,48 @@ public class Point2 extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
         listview.setAdapter(adapter);
+        listview.setEnabled(true);
         listview.setOnItemClickListener(new ListItemClick());
     }
 
 
+    // TODO: map.java로 돌아감
     // TODO: 지도 마커 클릭하면 지명과 아래 '자세히보기' 텍스트 뜸. '자세히보기' 누르면
     // TODO: 어종, 날씨 페이지로
-    // TODO: 가능하면 마커 안에 정보 출력
     class ListItemClick implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (category) {
                 case "Onboard":
                     OnBoard onBoard = Onboardlist.get(position);
-                    Log.d("click", onBoard.point_nm);
+                    returnCategory("Onboard", onBoard);
                     break;
                 case "Freshwater":
                     FreshWater freshWater = Freshwaterlist.get(position);
-                    Log.d("click", freshWater.name);
+                    returnCategory("Freshwater", freshWater);
                     break;
                 case "Rock":
                     Rock rock = Rocklist.get(position);
-                    Log.d("click", rock.point_nm);
+                    Log.d("rock", rock.point_nm);
+                    returnCategory("Rock", rock);
                     break;
                 case "Sea":
                     Sea sea = Sealist.get(position);
-                    Log.d("click", sea.name);
+                    returnCategory("Sea", sea);
                     break;
             }
         }
     }
 
+    public void returnCategory(String category, Parcelable point){
+        intent = getIntent();
+        intent.putExtra("returnCategory", category);
+        intent.putExtra("Parcelable", point);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 
-      /*@Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.d("click", list.get(position)+"");
-        // intent 넘겨서 read.xml로
-		*//*Intent intent = new Intent(this, ReadActivity.class);
-		Log.d("click", list.get(position).get("id"));
-		OnBoard onBoard = handler.find(list.get(position).get("id"));
-		intent.putExtra("click", product);
-		startActivity(intent);*//*
-    }*/
 }
-
 
 
 

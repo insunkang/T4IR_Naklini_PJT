@@ -3,6 +3,7 @@ package org.tensorflow.demo.mappoint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -229,52 +230,58 @@ public class DBHandler {
     }
 
 
-    // TODO: 나중에 구현 --------------------------------------------
-    /*public ArrayList<Product> search(String id) {
-        ArrayList<Product> productList = new ArrayList<Product>();
-        Product product = null;
+    // TODO: 자세히 보기 페이지 ===========================================================
 
-        Cursor cursor = db.query("product", null, "name like ?",
-                new String[]{"%"+id+"%"}, null, null, null);
-        int count = cursor.getCount(); //레코드 개수를 반환
-        Log.d("list", "조회된 row: " + count);
-        while (cursor.moveToNext()) {
-            int idx = cursor.getInt(0);
-            String name = cursor.getString(1);
-            int price = cursor.getInt(2);
-            int su = cursor.getInt(3);
-            int totPrice = cursor.getInt(4);
-            product = new Product(idx, name, price, su, totPrice);
-            productList.add(product);
+    public Parcelable find(String category, String marker_title) {
+        Parcelable point = null;
+        Cursor cursor = null;
+        Log.d("DB find", "호출됨"+category);
+
+        switch (category){
+            case "Onboard":
+            case "Rock":
+                cursor = db.query(category, null, "POINT_NM = ?",
+                        new String[]{marker_title}, null, null, null);
+                Log.d("DB find", cursor.getCount()+"");
+                if (cursor.moveToNext()) {
+                    int _id = cursor.getInt(0);
+                    String name = cursor.getString(1);
+                    String point_nm = cursor.getString(2);
+                    String dpwt = cursor.getString(3); // 깊이
+                    String material = cursor.getString(4);
+                    String tide_time = cursor.getString(5);
+                    String target = cursor.getString(6);
+                    String latitude = cursor.getString(7);
+                    String longitude = cursor.getString(8);
+                    String adr_knm = cursor.getString(9); // 주소
+
+                    if(category.equals("Onboard")){
+                        point = new OnBoard(_id, name, point_nm, dpwt, material, tide_time, target, latitude, longitude, adr_knm);
+                        Log.d("DB find", point.toString());
+                    }else{
+                        point = new Rock(_id, name, point_nm, dpwt, material, tide_time, target, latitude, longitude, adr_knm);
+                    }
+                }
+                break;
+            case "Freshwater":
+            case "Sea":
+                cursor = db.query(category, null, "name = ?",
+                        new String[]{marker_title}, null, null, null);
+                Log.d("DB find", cursor.getCount()+"");
+                if(cursor.moveToNext()) {
+                    int _id = cursor.getInt(0);
+                    String name = cursor.getString(1);
+                    String addr = cursor.getString(2);
+                    String target = cursor.getString(3);
+                    if(category.equals("Freshwater")){
+                        point = new FreshWater(_id, name, addr, target);
+                    }else{
+                        point = new Sea(_id, name, addr, target);
+                    }
+                }
+                break;
         }
-        return productList;
+        return point;
     }
 
-    // TODO: ReadActivity에서 사용
-    public Product find(String id) {
-        Product product = null;
-        Cursor cursor = db.query("product", null, "_id = ?",
-                new String[]{id}, null, null, null);
-        // 원소가 하나만 있어도 커서를 한번 넘겨야 한다(ResultSet과 같음)
-        if (cursor.moveToNext()) {
-            int idx = cursor.getInt(0);
-            String name = cursor.getString(1);
-            int price = cursor.getInt(2);
-            int su = cursor.getInt(3);
-            int totPrice = cursor.getInt(4);
-            product =  new Product(idx, name, price, su, totPrice);
-        }
-        return product;
-    }*/
-
-    /*public ArrayList<OnBoard> OnFreshwaterList() {
-
-
-    }
-
-    public ArrayList<OnBoard> OnRockList() {
-    }
-
-    public ArrayList<OnBoard> OnSeaList() {
-    }*/
 }

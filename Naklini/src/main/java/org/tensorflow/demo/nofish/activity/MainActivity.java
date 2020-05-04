@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.Yolo.YoloMainActivity;
-import org.tensorflow.demo.mappoint.Point1;
+import org.tensorflow.demo.map.map;
 import org.tensorflow.demo.tip.TIPActivity;
 
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         mapdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Point1.class);
+                Intent intent = new Intent(MainActivity.this, map.class);
                 startActivity(intent);
             }
         });
@@ -64,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_navi,menu);
-        MenuItem searchbar = menu.findItem(R.id.searchbar);
-        SearchView searchView = (SearchView)searchbar.getActionView();
-        searchView.setQueryHint("검색어를 입력하세요");
         return true;
     }
 
