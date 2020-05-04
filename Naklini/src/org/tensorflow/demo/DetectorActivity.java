@@ -16,6 +16,7 @@
 
 package org.tensorflow.demo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -32,6 +33,7 @@ import android.util.TypedValue;
 import android.widget.Toast;
 
 import org.tensorflow.demo.OverlayView.DrawCallback;
+import org.tensorflow.demo.Yolo.YoloResultActivity;
 import org.tensorflow.demo.env.BorderedText;
 import org.tensorflow.demo.env.ImageUtils;
 import org.tensorflow.demo.env.Logger;
@@ -319,13 +321,15 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 cropToFrameTransform.mapRect(location);
                 result.setLocation(location);
                 mappedRecognitions.add(result);
-                if (result.getConfidence()>=0.9f){ //가져온 confidence가 90프로 보다 높을때 화면 전환
-                  //Intent intent = new Intent(DetectorActivity.this, YoloResultActivity.class);
+                if (result.getConfidence()>=0.9f){
+                  SystemClock.sleep(500);
+                  //가져온 confidence가 90프로 보다 높을때 화면 전환
+                  Intent intent = new Intent(DetectorActivity.this, YoloResultActivity.class);
+                  intent.putExtra("fishName",result.getTitle());
                   Toast.makeText(DetectorActivity.this, result.getTitle()+"", Toast.LENGTH_SHORT).show();
                   //getTitle() -> 어종 이름 호출 함수 -> 다음 intent로 넘겨주어서 sql통해 어종 정보 불러오는 작업 남
-                  //startActivity(intent);
+                  startActivity(intent);
                 }
-                //Toast.makeText(DetectorActivity.this, "디텍팅 이후 메시지 생", Toast.LENGTH_SHORT).show();
               }
             }
 
