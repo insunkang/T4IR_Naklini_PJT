@@ -40,17 +40,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style=""
-                    android:text="분류"
+                    android:text="지역으로 검색"
                     app:layout_constraintEnd_toStartOf="@+id/button3"
                     tools:layout_editor_absoluteY="42dp" />
 
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="실험2"
-                    tools:layout_editor_absoluteX="142dp"
-                    tools:layout_editor_absoluteY="42dp" />
             </LinearLayout>
 
         </LinearLayout>
