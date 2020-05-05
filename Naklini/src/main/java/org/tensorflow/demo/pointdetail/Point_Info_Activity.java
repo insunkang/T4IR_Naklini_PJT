@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.tensorflow.demo.R;
+import org.tensorflow.demo.map.weather;
 import org.tensorflow.demo.mappoint.DBHandler;
 import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
@@ -35,6 +36,9 @@ public class Point_Info_Activity extends AppCompatActivity {
     Sea sea;
     FreshWater freshWater;
 
+    LinearLayout callWeather;
+    String addr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,7 @@ public class Point_Info_Activity extends AppCompatActivity {
         fish_name = findViewById(R.id.fish_name);
         callMap = findViewById(R.id.callMap);
         regionInfo = findViewById(R.id.regionInfo);
+        callWeather = findViewById(R.id.weather);
 
         handler = new DBHandler();
 
@@ -67,20 +72,33 @@ public class Point_Info_Activity extends AppCompatActivity {
             case "Onboard":
                 onBoard = (OnBoard)handler.find(category, point_nm);
                 printOnboard();
+                addr = onBoard.adr_knm;
                 break;
             case "Freshwater":
                 freshWater = (FreshWater)handler.find(category, point_nm);
                 printFreshwater();
+                addr = freshWater.addr;
                 break;
             case "Rock":
                 rock = (Rock)handler.find(category, point_nm);
                 printRock();
+                addr = rock.adr_knm;
                 break;
             case "Sea":
                 sea = (Sea)handler.find(category, point_nm);
                 printSea();
+                addr = sea.addr;
                 break;
         }
+
+        callWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Point_Info_Activity.this, weather.class);
+                intent.putExtra("addr",addr);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -92,7 +110,7 @@ public class Point_Info_Activity extends AppCompatActivity {
         regionInfo.setText("깊이: "+ onBoard.dpwt+"\n"+
                 "지형: "+onBoard.material+"\n"+
                 "조류: "+onBoard.tide_time
-                );
+        );
 
     }
 
