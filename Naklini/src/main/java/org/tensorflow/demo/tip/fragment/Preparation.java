@@ -24,18 +24,28 @@ import org.tensorflow.demo.R;
 public class Preparation extends Fragment implements YouTubePlayer.OnInitializedListener{
     private static final String API_KEY = "AIzaSyAYY81JoGkdoDUcAu8v-GYOJx0Bz3yIne8";
     private static String VIDEO_ID="crpZtQTynnY";
-
+    View v;
+    public Preparation() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.preparation,container,false);
-        // Inflate the layout for this fragment
-        YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment,youTubePlayerFragment).commit();
-        youTubePlayerFragment.initialize(API_KEY, this);
-        return view;
+        if(v==null){
+            v = inflater.inflate(R.layout.preparation,container,false);
+            // Inflate the layout for this fragment
+            YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment,youTubePlayerFragment).commit();
+            youTubePlayerFragment.initialize(API_KEY, this);
+        }
+        else{
+            YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment,youTubePlayerFragment).commit();
+            youTubePlayerFragment.initialize(API_KEY, this);
+        }
+        return v;
     }
 
     @Override

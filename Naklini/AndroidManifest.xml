@@ -25,7 +25,8 @@
         android:label="@string/name"
         android:supportsRtl="true"
         android:theme="@style/App_Theme">
-        <activity android:name=".tip.TIPActivity"/>
+        <activity android:name=".tip.TIPActivity"
+            />
         <activity android:name=".mappoint.Point1"/>
         <activity android:name=".mappoint.Point2"/>
         <activity android:name=".Yolo.YoloResultActivity"/>

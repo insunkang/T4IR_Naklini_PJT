@@ -74,13 +74,23 @@ public class NoFishAdapter extends BaseAdapter implements View.OnClickListener {
             DayView.setTextColor(Color.BLACK);
             for(int i=0;i<datelist.size();i++){
                 if(nowmonth.equals(datelist.get(i).getStart_month())&&nowday.equals(datelist.get(i).getStart_day())){
-                    DayView.setTextColor(Color.RED);
+                    DayView.setTextColor(Color.WHITE);
+                    DayView.setTextSize(10);
+                    DayView.setBackgroundColor(Color.rgb(255,102,0));
                     FishView.setText(datelist.get(i).getTitle());
+                    FishView.setBackgroundColor(Color.rgb(255,102,0));
+                    FishView.setTextColor(Color.WHITE);
+                    FishView.setTextSize(15);
 
                 }
                 if(nowmonth.equals(datelist.get(i).getFinish_month())&&nowday.equals(datelist.get(i).getFinish_day())){
-                    DayView.setTextColor(Color.BLUE);
+                    DayView.setTextColor(Color.WHITE);
+                    DayView.setTextSize(10);
+                    DayView.setBackgroundColor(Color.rgb(26,35,126));
                     FishView.setText(datelist.get(i).getTitle());
+                    FishView.setBackgroundColor(Color.rgb(26,35,126));
+                    FishView.setTextColor(Color.WHITE);
+                    FishView.setTextSize(15);
                 }
             }
         return convertView;
