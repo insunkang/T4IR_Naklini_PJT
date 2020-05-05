@@ -45,6 +45,7 @@ import org.tensorflow.demo.map.db.Onboard;
 import org.tensorflow.demo.map.db.Rock;
 import org.tensorflow.demo.map.db.Sea;
 import org.tensorflow.demo.mappoint.DBHandler;
+import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
 import org.tensorflow.demo.mappoint.Point1;
 import org.tensorflow.demo.pointdetail.Point_Info_Activity;
