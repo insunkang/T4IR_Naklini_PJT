@@ -30,7 +30,7 @@
         <activity android:name=".mappoint.Point2"/>
         <activity android:name=".Yolo.YoloResultActivity"/>
         <activity android:name=".DetectorActivity"/>
-        <activity android:name=".Yolo.YoloMainActivity"/>
+
         <activity android:name=".nofish.activity.NoFishData" />
         <activity android:name=".map.weather"/>
         <activity android:name=".map.map"/>
