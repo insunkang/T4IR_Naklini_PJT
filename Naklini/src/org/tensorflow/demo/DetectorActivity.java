@@ -72,7 +72,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   // Graphs and models downloaded from http://pjreddie.com/darknet/yolo/ may be converted e.g. via
   // DarkFlow (https://github.com/thtrieu/darkflow). Sample command:
   // ./flow --model cfg/tiny-yolo-voc.cfg --load bin/tiny-yolo-voc.weights --savepb --verbalise
-  private static final String YOLO_MODEL_FILE = "file:///android_asset/graph-tiny-yolo-voc.pb";
+  private static final String YOLO_MODEL_FILE = "file:///android_asset/Nak-second2.pb";
   private static final int YOLO_INPUT_SIZE = 416;
   private static final String YOLO_INPUT_NAME = "input";
   private static final String YOLO_OUTPUT_NAMES = "output";
@@ -84,12 +84,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   private enum DetectorMode {
     TF_OD_API, MULTIBOX, YOLO;
   }
-  private static final DetectorMode MODE = DetectorMode.TF_OD_API;
+  private static final DetectorMode MODE = DetectorMode.YOLO;
 
   // Minimum detection confidence to track a detection.
   private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.6f;
   private static final float MINIMUM_CONFIDENCE_MULTIBOX = 0.1f;
-  private static final float MINIMUM_CONFIDENCE_YOLO = 0.25f;
+  private static final float MINIMUM_CONFIDENCE_YOLO = 0.9f;
 
   private static final boolean MAINTAIN_ASPECT = MODE == DetectorMode.YOLO;
 
@@ -321,7 +321,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 cropToFrameTransform.mapRect(location);
                 result.setLocation(location);
                 mappedRecognitions.add(result);
-                if (result.getConfidence()>=0.9f){
+                if (result.getConfidence()>=0.91f){
                   SystemClock.sleep(500);
                   //가져온 confidence가 90프로 보다 높을때 화면 전환
                   Intent intent = new Intent(DetectorActivity.this, YoloResultActivity.class);
@@ -329,6 +329,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                   Toast.makeText(DetectorActivity.this, result.getTitle()+"", Toast.LENGTH_SHORT).show();
                   //getTitle() -> 어종 이름 호출 함수 -> 다음 intent로 넘겨주어서 sql통해 어종 정보 불러오는 작업 남
                   startActivity(intent);
+                  break;
                 }
               }
             }

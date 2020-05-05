@@ -19,13 +19,15 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.os.Trace;
+
+import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
+import org.tensorflow.demo.env.Logger;
+import org.tensorflow.demo.env.SplitTimer;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
-import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
-import org.tensorflow.demo.env.Logger;
-import org.tensorflow.demo.env.SplitTimer;
 
 /** An object detector that uses TF and a YOLO model to detect objects. */
 public class TensorFlowYoloDetector implements Classifier {
@@ -34,7 +36,7 @@ public class TensorFlowYoloDetector implements Classifier {
   // Only return this many results with at least this confidence.
   private static final int MAX_RESULTS = 5;
 
-  private static final int NUM_CLASSES = 20;
+  private static final int NUM_CLASSES = 3;
 
   private static final int NUM_BOXES_PER_BLOCK = 5;
 
@@ -49,26 +51,10 @@ public class TensorFlowYoloDetector implements Classifier {
   };
 
   private static final String[] LABELS = {
-    "aeroplane",
-    "bicycle",
-    "bird",
-    "boat",
-    "bottle",
-    "bus",
-    "car",
-    "cat",
-    "chair",
-    "cow",
-    "diningtable",
-    "dog",
-    "horse",
-    "motorbike",
-    "person",
-    "pottedplant",
-    "sheep",
-    "sofa",
-    "train",
-    "tvmonitor"
+
+    "flounder",
+    "salmon",
+    "mac"
   };
 
   // Config values.
