@@ -24,4 +24,5 @@
     <string name="empty_description">No description available.</string>
     <string name="open_str">open_toggle</string>
     <string name="close_str">close_toggle</string>
+    <string name="city_not_found">Sorry! No weather forecast found for %1$s.</string>
 </resources>

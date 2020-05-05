@@ -7,18 +7,18 @@
         android:title="HOME" />
     <item
         android:id="@+id/Item1"
-        android:icon="@android:drawable/ic_lock_idle_charging"
+        android:icon="@drawable/map"
         android:title="지도" />
     <item
         android:id="@+id/Item2"
-        android:icon="@android:drawable/ic_btn_speak_now"
+        android:icon="@drawable/search"
         android:title="사진 검색" />
     <item
         android:id="@+id/Item3"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/nofish"
         android:title="금어기" />
     <item
         android:id="@+id/Item4"
-        android:icon="@android:drawable/ic_lock_silent_mode"
+        android:icon="@drawable/fishing"
         android:title="낚린이 TIP" />
 </menu>
