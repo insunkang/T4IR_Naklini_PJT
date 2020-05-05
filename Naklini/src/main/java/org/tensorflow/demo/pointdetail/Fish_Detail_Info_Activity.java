@@ -1,21 +1,34 @@
 package org.tensorflow.demo.pointdetail;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.GridLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.tensorflow.demo.Fish_Detail_InfoList;
 import org.tensorflow.demo.R;
+
+import java.util.ArrayList;
 
 
 public class Fish_Detail_Info_Activity extends AppCompatActivity {
     Context mContext;
-    //Fish_Detail_Info_DBHandler handler;
-    //ArrayList<Fish_Detail_InfoList> infoList;
+    Fish_Detail_Info_DBHandler handler;
+    ArrayList<Species> speciesList;
+    Species species;
+
+    ArrayList<String> targetList;
+
     RecyclerView infoView;
-    //FishInfoAdapter adapter;
-    //Bitmap bitmap;
+    FishInfoAdapter adapter;
+
+    Intent intent;
 
 
     @Override
@@ -24,27 +37,17 @@ public class Fish_Detail_Info_Activity extends AppCompatActivity {
         mContext = Fish_Detail_Info_Activity.this;
         setContentView(R.layout.fish_detail_info);
         infoView = findViewById(R.id.fish_info);
+        handler = Fish_Detail_Info_DBHandler.open(mContext);
 
-        /*handler = Fish_Detail_Info_DBHandler.open(mContext);
+        intent = getIntent();
+        targetList = intent.getStringArrayListExtra("fishArray");
 
-        //setThread();
-        //Log.d("bitmap","사진데이터 : "+bitmap);
-
-        infoList = handler.InfoList();
-        ArrayList<Fish_Detail_InfoList> List = new ArrayList<>();
-        for(int i=1;i<infoList.size();i++){
-            Fish_Detail_InfoList info = new Fish_Detail_InfoList();
-            info.setImg(infoList.get(i).img);
-            info.setNum(infoList.get(i).num);
-            info.setFish_name(infoList.get(i).fish_name);
-            info.setDistribution(infoList.get(i).distribution);
-            info.setHabitat(infoList.get(i).habitat);
-            List.add(info);
-        }
-        adapter = new FishInfoAdapter(mContext, R.layout.info_detail,List);
+        speciesList = handler.SpeciesList(targetList);
+        Log.d("species", speciesList.size()+"");
+        adapter = new FishInfoAdapter(mContext, R.layout.info_detail, speciesList);
         infoView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
         infoView.setLayoutManager(manager);
-        infoView.setAdapter(adapter);*/
+        infoView.setAdapter(adapter);
     }
 }

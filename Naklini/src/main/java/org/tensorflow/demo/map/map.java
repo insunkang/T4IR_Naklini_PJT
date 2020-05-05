@@ -80,6 +80,8 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     Intent intent;
     Intent detail_intent;
 
+    String returnCategory = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +113,16 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         detail_intent = new Intent(org.tensorflow.demo.map.map.this, Point_Info_Activity.class);
 
     }
+    // 지역으로 보기 버튼으로 포인트 불러온 후 '뒤로가기 버튼' 누르면 다시 리스트뷰 페이지로
+    // 분류 보기 옵션으로 불러온 후 '뒤로가기 버튼' 누르면 메인 화면으로
+    @Override
+    public void onBackPressed() {
+        if(!returnCategory.equals("")){
+            callPoint1();
+        }else{
+            super.onBackPressed();
+        }
+    }
 
     public void callPoint1(){
         // Point1.java 부르기
@@ -122,7 +134,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        String returnCategory = "";
+        //String returnCategory = "";
         if(requestCode==CALL_POINT_CODE){
             if(resultCode==RESULT_OK){
                 // @서로 넘길때 OnBoard(mappoint)객체를 통째로 넘겨주고 onboard와 _id로 연결
@@ -231,6 +243,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                returnCategory = "";
                 if (position == 1){
                     onboard();
                     detail_intent.putExtra("categoryDetail", "Onboard");
@@ -528,6 +541,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         MarkerOptions mOptions2 = new MarkerOptions();
         mOptions2.title("search result");
         //mOptions2.snippet(address);
+        mOptions2.position(point);
         mOptions2.position(point);
         // 마커 추가
         map.addMarker(mOptions2);
