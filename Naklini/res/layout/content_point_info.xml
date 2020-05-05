@@ -169,6 +169,26 @@
                             android:textColor="#FF6600"
                             android:textSize="15sp" />
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bmjua"
+                            android:gravity="end"
+                            android:text="어종 상세보기"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/fish_detail"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="1dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:tint="#000000" />
+
 
                     </LinearLayout>
 
