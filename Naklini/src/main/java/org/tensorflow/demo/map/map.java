@@ -38,8 +38,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.map.db.DataAdapter;
 import org.tensorflow.demo.map.db.Freshwater;
@@ -47,7 +45,6 @@ import org.tensorflow.demo.map.db.Onboard;
 import org.tensorflow.demo.map.db.Rock;
 import org.tensorflow.demo.map.db.Sea;
 import org.tensorflow.demo.mappoint.DBHandler;
-import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
 import org.tensorflow.demo.mappoint.Point1;
 import org.tensorflow.demo.pointdetail.Point_Info_Activity;
@@ -86,6 +83,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_map);
         drawerLayout = findViewById(R.id.main_drawer);
         listBtn = findViewById(R.id.button2);
+        DBHandler handler = DBHandler.open(this);
         //액션바에 버튼 설정 - 버튼을 선택하면 NavigationView가 display
         //                    버튼을 다시 선택하면 NavigationView가 화면에서 사라지도록 설정
         toggle = new ActionBarDrawerToggle(this,
@@ -98,8 +96,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         }else{
             init();
         }
-        DBHandler handler = DBHandler.open(this);
-        // TODO: 연결- Point ==============================================================================
+        // TODO: 연결 부분 추가 ===========================================================================
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,18 +124,20 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
             if(resultCode==RESULT_OK){
                 // @서로 넘길때 OnBoard(mappoint)객체를 통째로 넘겨주고 onboard와 _id로 연결
                 returnCategory = intent.getStringExtra("returnCategory");
+                Log.d("intent", returnCategory);
                 // 카테고리 목록 다 부르고 내가 선택한 좌표, 위치로 zoom
                 switch(returnCategory){
                     case "Onboard":
                         //onboard();
                         OnBoard point1 = (OnBoard)intent.getParcelableExtra("Parcelable");
+                        Log.d("intent", returnCategory+", "+point1);
                         LatLng myloc1 = new LatLng(Double.parseDouble(point1.latitude),Double.parseDouble(point1.longitude));
                         pointZoom(point1.point_nm,myloc1);
                         detail_intent.putExtra("categoryDetail", "Onboard");
                         break;
                     case "Freshwater":
-                        FreshWater point2 =
-                                (FreshWater) intent.getParcelableExtra("Parcelable");
+                        org.tensorflow.demo.mappoint.FreshWater point2 =
+                                (org.tensorflow.demo.mappoint.FreshWater) intent.getParcelableExtra("Parcelable");
                         // 위도, 경도 말고 위치로 검색
                         pointZoom2(point2.name, point2.addr);
                         detail_intent.putExtra("categoryDetail", "Freshwater");
@@ -172,6 +171,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         MarkerOptions mOptions2 = new MarkerOptions();
         mOptions2.title(name);
         mOptions2.snippet("자세히 보기");
+        //mOptions2.snippet(address);
         mOptions2.position(myloc);
         // 마커 추가
         map.addMarker(mOptions2);
@@ -220,10 +220,10 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
 
         spinnerlist = new ArrayList<>();
         spinnerlist.add("낚시 포인트별 전체 조회");
-        spinnerlist.add("Onboard");
-        spinnerlist.add("Freshwater");
-        spinnerlist.add("Rock");
-        spinnerlist.add("Sea");
+        spinnerlist.add("선상낚시");
+        spinnerlist.add("민물낚시");
+        spinnerlist.add("갯바위낚시");
+        spinnerlist.add("바다낚시");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_dropdown_item_1line,spinnerlist);
 
         spinner = findViewById(R.id.dropdown);
@@ -350,7 +350,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
             // 마커 생성
             MarkerOptions mOptions2 = new MarkerOptions();
             mOptions2.title("search result");
-            mOptions2.snippet(address +"\n자세히 보기");
+            mOptions2.snippet(address);
             mOptions2.position(point);
             // 마커 추가
             map.addMarker(mOptions2);
@@ -461,7 +461,6 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
             mOptions2.position(point);
 
             mOptions2.snippet("자세히 보기");
-
             // 마커 추가
             map.addMarker(mOptions2);
             // 해당 좌표로 화면 줌
@@ -549,7 +548,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //완료 후 메시지 출력
-            Toast.makeText(org.tensorflow.demo.map.map.this ,s, Toast.LENGTH_LONG).show();
+            Toast.makeText(org.tensorflow.demo.map.map.this,s, Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -637,7 +636,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //완료 후 메시지 출력
-            Toast.makeText(org.tensorflow.demo.map.map.this ,s, Toast.LENGTH_LONG).show();
+            Toast.makeText(org.tensorflow.demo.map.map.this,s, Toast.LENGTH_LONG).show();
         }
 
         @Override

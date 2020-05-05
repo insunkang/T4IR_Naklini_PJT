@@ -24,6 +24,7 @@
         android:allowBackup="true"
         android:label="@string/name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/App_Theme">
         <activity android:name=".tip.TIPActivity"/>
         <activity android:name=".mappoint.Point1"/>
