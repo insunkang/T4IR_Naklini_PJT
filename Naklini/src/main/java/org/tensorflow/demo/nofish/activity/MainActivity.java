@@ -4,15 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import org.tensorflow.demo.DetectorActivity;
 import org.tensorflow.demo.R;
-import org.tensorflow.demo.Yolo.YoloMainActivity;
 import org.tensorflow.demo.map.map;
 import org.tensorflow.demo.tip.TIPActivity;
 
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         detectdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, YoloMainActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetectorActivity.class);
                 startActivity(intent);
             }
         });
