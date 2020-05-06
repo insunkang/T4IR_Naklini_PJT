@@ -37,8 +37,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.navigation.NavigationView;
 
 
+import org.tensorflow.demo.DetectorActivity;
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.map.db.DataAdapter;
 import org.tensorflow.demo.map.db.Freshwater;
@@ -49,7 +51,10 @@ import org.tensorflow.demo.mappoint.DBHandler;
 import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
 import org.tensorflow.demo.mappoint.Point1;
+import org.tensorflow.demo.nofish.activity.MainActivity;
+import org.tensorflow.demo.nofish.activity.NoFishData;
 import org.tensorflow.demo.pointdetail.Point_Info_Activity;
+import org.tensorflow.demo.tip.TIPActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -84,6 +89,8 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        getSupportActionBar().setIcon(R.drawable.mainicon);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         drawerLayout = findViewById(R.id.main_drawer);
         listBtn = findViewById(R.id.button2);
         //액션바에 버튼 설정 - 버튼을 선택하면 NavigationView가 display
@@ -109,6 +116,40 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
 
         // TODO: 연결- detail =============================================================================
         detail_intent = new Intent(org.tensorflow.demo.map.map.this, Point_Info_Activity.class);
+
+        NavigationView navigationView = findViewById(R.id.main_drawer_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if (id == R.id.Item0){
+                    Intent intent = new Intent(map.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if (id == R.id.Item1){
+                    Intent intent = new Intent(map.this, map.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if (id == R.id.Item2){
+                    Intent intent = new Intent(map.this, DetectorActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if (id == R.id.Item3){
+                    Intent intent = new Intent(map.this, NoFishData.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if (id == R.id.Item4){
+                    Intent intent = new Intent(map.this, TIPActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -433,12 +474,6 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         }
     }
 
-    public void setPosition(){
-        LatLng myloc = new LatLng(37.5013395,127.0393345);
-        // 카메라가 이동할때 애니메이션이 적용
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(myloc,7));
-    }
-
     public void onboard(){
         map.clear();
         DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
@@ -455,7 +490,6 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         //String latitude = onboardList.get(1).getLatitude(); // 위도
         //String longitude = onboardList.get(1).getLongitude(); // 경도
 
-        setPosition();
         for (int i=1; i<onboardList.size(); i++){
             String latitude2 = onboardList.get(i).getLatitude();
             String longitude2 = onboardList.get(i).getLongitude();
@@ -505,7 +539,6 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         //String latitude = rockList.get(1).getLatitude(); // 위도
         //String longitude = rockList.get(1).getLongitude(); // 경도
 
-        setPosition();
         for (int i=1; i<rockList.size(); i++){
             String latitude2 = rockList.get(i).getLatitude();
             String longitude2 = rockList.get(i).getLongitude();
@@ -540,13 +573,11 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     public void fresh(){
         AsyncTask asyncTask = new AsyncTask();
         asyncTask.execute();
-        setPosition();
     }
 
     public void sea(){
         AsyncTask2 asyncTask2 = new AsyncTask2();
         asyncTask2.execute();
-        setPosition();
     }
 
     class AsyncTask extends android.os.AsyncTask<String,MarkerOptions,String>{

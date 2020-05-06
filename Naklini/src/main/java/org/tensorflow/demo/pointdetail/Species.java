@@ -12,6 +12,58 @@ public class Species implements Parcelable {
     String size;
     String picture;
 
+    public Species(){
+
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDist() {
+        return dist;
+    }
+
+    public void setDist(String dist) {
+        this.dist = dist;
+    }
+
+    public String getLiving() {
+        return living;
+    }
+
+    public void setLiving(String living) {
+        this.living = living;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public Species(int _id, String name){
         this._id = _id;
         this.name = name;

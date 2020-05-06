@@ -1,78 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-    <LinearLayout
+    android:id="@+id/main_drawer" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/rod_btn"
-            android:fontFamily="@font/bmjua"
-            android:background="#A0DADB"
-            android:layout_margin="2dp"
-            android:onClick="btn_click"
-            android:text="낚시대"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:tag="1"
-            android:id="@+id/pre_btn"
-            android:fontFamily="@font/bmjua"
-            android:background="#A0DADB"
-            android:layout_margin="2dp"
-            android:onClick="btn_click"
-            android:text="라인 및 채비"/>
-        <Button
-            android:id="@+id/bait_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/bmjua"
-            android:background="#A0DADB"
-            android:onClick="btn_click"
-            android:layout_margin="2dp"
-            android:tag="2"
-            android:text="미끼"/>
-        <Button
-            android:id="@+id/sort_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/bmjua"
-            android:background="#A0DADB"
-            android:layout_margin="2dp"
-            android:onClick="btn_click"
-            android:tag="3"
-            android:text="낚시종류"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/rod_btn"
+                android:fontFamily="@font/bmjua"
+                android:background="#A0DADB"
+                android:layout_margin="2dp"
+                android:onClick="btn_click"
+                android:text="낚시대"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:tag="1"
+                android:id="@+id/pre_btn"
+                android:fontFamily="@font/bmjua"
+                android:background="#A0DADB"
+                android:layout_margin="2dp"
+                android:onClick="btn_click"
+                android:text="라인 및 채비"/>
+            <Button
+                android:id="@+id/bait_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/bmjua"
+                android:background="#A0DADB"
+                android:onClick="btn_click"
+                android:layout_margin="2dp"
+                android:tag="2"
+                android:text="미끼"/>
+            <Button
+                android:id="@+id/sort_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/bmjua"
+                android:background="#A0DADB"
+                android:layout_margin="2dp"
+                android:onClick="btn_click"
+                android:tag="3"
+                android:text="낚시종류"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameframe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            >
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="org.tensorflow.demo.tip.fragment.Link"
+            />
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/frameframe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        >
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="org.tensorflow.demo.tip.fragment.Link"
-        />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_drawer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity = "start"/>
 
-    </FrameLayout>
-
-
-
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

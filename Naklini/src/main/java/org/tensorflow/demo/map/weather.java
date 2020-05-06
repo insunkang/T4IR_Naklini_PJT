@@ -88,11 +88,11 @@ public class weather extends AppCompatActivity {
                 }else if (Double.parseDouble(values[0].get("WSD")) >= 14){
                     WSD = "매우 강함";
                 }
+                empty.append("풍속 : "+WSD);
             }
             empty.setText("강수확률 : "+values[0].get("POP")+"%" +"\n" +
                     "습도 : "+values[0].get("REH")+"%" +"\n" +
-                    "하늘상태 : "+SKY +"\n" +
-                    "풍속 : "+WSD
+                    "하늘상태 : "+SKY +"\n"
             );
             if(values[0].get("PTY").equals("1")) {
                 //today = "1";//비

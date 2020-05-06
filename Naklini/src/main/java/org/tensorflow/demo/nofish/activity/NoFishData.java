@@ -8,21 +8,30 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
+
+import org.tensorflow.demo.DetectorActivity;
 import org.tensorflow.demo.R;
+import org.tensorflow.demo.map.map;
 import org.tensorflow.demo.nofish.adapter.NoFishAdapter;
 import org.tensorflow.demo.nofish.adapter.NoFishDetailAdapter;
 import org.tensorflow.demo.nofish.item.Calendar_data;
 import org.tensorflow.demo.nofish.item.Date_data;
 import org.tensorflow.demo.nofish.item.Detail_data;
+import org.tensorflow.demo.tip.TIPActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -57,10 +66,15 @@ public class NoFishData extends AppCompatActivity implements View.OnClickListene
         DBHelper mHelper;
         RecyclerView detail;
 
+        DrawerLayout drawerLayout;
+        ActionBarDrawerToggle toggle;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_no_fish_data);
+                getSupportActionBar().setIcon(R.drawable.mainicon);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
                 mContext = NoFishData.this;
                 Intent intent = getIntent();
                 //달력
@@ -103,7 +117,53 @@ public class NoFishData extends AppCompatActivity implements View.OnClickListene
                 adapter = new NoFishAdapter(mContext, calList, dateList);
                 adapter.notifyDataSetChanged();
                 calendarView.setAdapter(adapter);
+
+                drawerLayout = findViewById(R.id.main_drawer);
+                //액션바에 버튼 설정 - 버튼을 선택하면 NavigationView가 display
+                //                    버튼을 다시 선택하면 NavigationView가 화면에서 사라지도록 설정
+                toggle = new ActionBarDrawerToggle(this,
+                        drawerLayout, R.string.open_str,R.string.close_str);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                toggle.syncState();
+
+                NavigationView navigationView = findViewById(R.id.main_drawer_view);
+                navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                                int id = menuItem.getItemId();
+                                if (id == R.id.Item0){
+                                        Intent intent = new Intent(NoFishData.this, MainActivity.class);
+                                        startActivity(intent);
+                                }
+                                if (id == R.id.Item1){
+                                        Intent intent = new Intent(NoFishData.this, DetectorActivity.class);
+                                        startActivity(intent);
+                                }
+                                if (id == R.id.Item2){
+                                        Intent intent = new Intent(NoFishData.this, NoFishData.class);
+                                        startActivity(intent);
+                                }
+                                if (id == R.id.Item3){
+                                        Intent intent = new Intent(NoFishData.this, TIPActivity.class);
+                                        startActivity(intent);
+                                }
+                                if (id == R.id.Item4){
+                                        Intent intent = new Intent(NoFishData.this, TIPActivity.class);
+                                        startActivity(intent);
+                                }
+                                return false;
+                        }
+                });
         }
+
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                if (toggle.onOptionsItemSelected(item)){
+
+                }
+                return super.onOptionsItemSelected(item);
+        }
+
         public void DateList(){
             cursor = db.rawQuery("SELECT * FROM test",null);
             startManagingCursor(cursor);

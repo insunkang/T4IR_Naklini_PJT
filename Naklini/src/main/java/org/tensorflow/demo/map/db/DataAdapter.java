@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.tensorflow.demo.Yolo.YoloDataBaseHelper;
-import org.tensorflow.demo.pointdetail.Fish_Detail_InfoList;
+import org.tensorflow.demo.pointdetail.Species;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -213,13 +213,13 @@ public class DataAdapter {
         try {
 
             // Table 이름 -> antpool_bitcoin 불러오기
-            String sql = "select * from SPECIES where field2 ="+"'"+afterName+"'";
+            String sql = "select * from SPECIES where name ="+"'"+afterName+"'";
 
             // 모델 넣을 리스트 생성
             List freshlist = new ArrayList();
 
             // TODO : 모델 선언
-            Fish_Detail_InfoList freshwater = null;
+            Species freshwater = null;
 
             Cursor mCur = mDb.rawQuery(sql, null);
             if (mCur!=null) {
@@ -227,13 +227,13 @@ public class DataAdapter {
                 while( mCur.moveToNext() ) {
 
                     // TODO : 커스텀 모델 생성
-                    freshwater = new Fish_Detail_InfoList();
+                    freshwater = new Species();
 
                     // TODO : Record 기술
                     // id, name, account, privateKey, secretKey, Comment
-                    freshwater.setFish_name(mCur.getString(1));
-                    freshwater.setDistribution(mCur.getString(2));
-                    freshwater.setHabitat(mCur.getString(3));
+                    freshwater.setName(mCur.getString(1));
+                    freshwater.setDist(mCur.getString(2));
+                    freshwater.setLiving(mCur.getString(3));
 
                     // 리스트에 넣기
                     freshlist.add(freshwater);
