@@ -2,15 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A0DADB"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
+        android:background="#A0DADB"
+       android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:fontFamily="@font/bmjua"
+        android:text="낚시 포인트 선택"
         android:padding="10dp"
-        android:text="낚시 포인트"
+        android:textColor="#000000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <LinearLayout
@@ -19,40 +25,164 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnOnboard"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-			android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:text="선상낚시"></Button>
+            android:layout_margin="15dp"
+            android:padding="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
 
-        <Button
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ship"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ships" />
+
+                <TextView
+                    android:id="@+id/shiptext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEE6CE"
+                    android:fontFamily="@font/bmjua"
+                    android:gravity="center"
+                    android:text="선 상 낚 시"
+                    android:textColor="#FF6600"
+                    android:textSize="30dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnSea"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-			android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:text="바다낚시"></Button>
+            android:layout_margin="15dp"
+            android:padding="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
 
-        <Button
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/sea"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/nature" />
+
+                <TextView
+                    android:id="@+id/seatext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEE6CE"
+                    android:fontFamily="@font/bmjua"
+                    android:gravity="center"
+                    android:text="바 다 낚 시"
+                    android:textColor="#FF6600"
+                    android:textSize="30dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnFreshwater"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-			android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:text="민물낚시"></Button>
+            android:layout_margin="15dp"
+            android:padding="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
 
-        <Button
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/river"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/river" />
+
+                <TextView
+                    android:id="@+id/rivertxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEE6CE"
+                    android:fontFamily="@font/bmjua"
+                    android:gravity="center"
+                    android:text="민 물 낚 시"
+                    android:textColor="#FF6600"
+                    android:textSize="30dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnRock"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-			android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:text="갯바위낚시"></Button>
-    </LinearLayout>
+            android:layout_margin="15dp"
+            android:padding="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/rock"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/rock" />
+
+                <TextView
+                    android:id="@+id/rocktxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEE6CE"
+                    android:fontFamily="@font/bmjua"
+                    android:gravity="center"
+                    android:text="갯 바 위 낚 시"
+                    android:textColor="#FF6600"
+                    android:textSize="30dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
+</LinearLayout>
     <!--<ImageView android:background = "#0000ff"
                android:layout_marginBottom = "10px"
                android:layout_width="fill_parent"

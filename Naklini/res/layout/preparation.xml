@@ -9,6 +9,6 @@
     <fragment
         android:id="@+id/frag"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:name="com.google.android.youtube.player.YouTubePlayerFragment"/>
 </FrameLayout>
