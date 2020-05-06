@@ -31,7 +31,7 @@ public class Point_Info_Activity extends AppCompatActivity {
     TextView fish_name;
     TextView callMap;
     TextView regionInfo;
-    ImageView fish_detail;
+    LinearLayout fish_detail;
 
     String category;
     String point_nm;

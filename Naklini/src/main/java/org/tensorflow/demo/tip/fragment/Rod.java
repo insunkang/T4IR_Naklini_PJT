@@ -37,6 +37,7 @@ public class Rod extends Fragment implements YouTubePlayer.OnInitializedListener
                 youTubePlayerFragment.initialize(API_KEY, this);
             }
             else{
+
                 YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_rod,youTubePlayerFragment).commitAllowingStateLoss();

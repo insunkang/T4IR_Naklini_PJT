@@ -153,6 +153,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/fish_detail"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -181,7 +182,7 @@
                             android:textSize="15sp" />
 
                         <ImageView
-                            android:id="@+id/fish_detail"
+                            android:id="@+id/btnbtn"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
