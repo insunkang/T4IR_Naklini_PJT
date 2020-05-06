@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.tensorflow.demo.R;
+import org.tensorflow.demo.map.weather;
 import org.tensorflow.demo.mappoint.DBHandler;
 import org.tensorflow.demo.mappoint.FreshWater;
 import org.tensorflow.demo.mappoint.OnBoard;
@@ -31,7 +32,7 @@ public class Point_Info_Activity extends AppCompatActivity {
     TextView fish_name;
     TextView callMap;
     TextView regionInfo;
-    ImageView fish_detail;
+    LinearLayout fish_detail;
 
     String category;
     String point_nm;
@@ -44,6 +45,9 @@ public class Point_Info_Activity extends AppCompatActivity {
 
     ArrayList<String> fishArray = new ArrayList<String>();
 
+    LinearLayout callWeather;
+    String addr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class Point_Info_Activity extends AppCompatActivity {
         callMap = findViewById(R.id.callMap);
         regionInfo = findViewById(R.id.regionInfo);
         fish_detail = findViewById(R.id.fish_detail);
+        callWeather = findViewById(R.id.weather);
 
         handler = new DBHandler();
 
@@ -70,12 +75,14 @@ public class Point_Info_Activity extends AppCompatActivity {
             case "Onboard":
                 onBoard = (OnBoard)handler.find(category, point_nm);
                 printOnboard();
+                addr = onBoard.adr_knm;
                 fishArray = putFishArray1(onBoard.target);
                 Log.d("species", fishArray.size()+"");
                 break;
             case "Freshwater":
                 freshWater = (FreshWater)handler.find(category, point_nm);
                 printFreshwater();
+                addr = freshWater.addr;
                 // 민물낚시와 바다낚시는 어종 정보가 없는 경우 있음
                 Log.d("species", fishArray.size()+"");
                 if(freshWater.target!=null) fishArray = putFishArray2(freshWater.target);
@@ -83,11 +90,13 @@ public class Point_Info_Activity extends AppCompatActivity {
             case "Rock":
                 rock = (Rock)handler.find(category, point_nm);
                 printRock();
+                addr = rock.adr_knm;
                 fishArray = putFishArray1(rock.target);
                 break;
             case "Sea":
                 sea = (Sea)handler.find(category, point_nm);
                 printSea();
+                addr = sea.addr;
                 // 민물낚시와 바다낚시는 어종 정보가 없는 경우 있음
                 if(sea.target != null) fishArray = putFishArray2(sea.target);
                 break;
@@ -111,6 +120,15 @@ public class Point_Info_Activity extends AppCompatActivity {
                 }else{
                     Toast.makeText(Point_Info_Activity.this, "정보가 없습니다.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        callWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Point_Info_Activity.this, weather.class);
+                intent.putExtra("addr",addr);
+                startActivity(intent);
             }
         });
 

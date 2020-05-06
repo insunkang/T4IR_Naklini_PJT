@@ -90,10 +90,10 @@ public class weather extends AppCompatActivity {
                 }
             }
             empty.setText("강수확률 : "+values[0].get("POP")+"%" +"\n" +
-                            "습도 : "+values[0].get("REH")+"%" +"\n" +
-                            "하늘상태 : "+SKY +"\n" +
-                            "풍속 : "+WSD
-                            );
+                    "습도 : "+values[0].get("REH")+"%" +"\n" +
+                    "하늘상태 : "+SKY +"\n" +
+                    "풍속 : "+WSD
+            );
             if(values[0].get("PTY").equals("1")) {
                 //today = "1";//비
                 txt.setText(values[0].get("T3H")+"°C");
