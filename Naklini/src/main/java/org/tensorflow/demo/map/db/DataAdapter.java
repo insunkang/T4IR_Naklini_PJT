@@ -6,6 +6,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.tensorflow.demo.Yolo.YoloDataBaseHelper;
+import org.tensorflow.demo.pointdetail.Fish_Detail_InfoList;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +21,11 @@ public class DataAdapter {
 
     private final Context mContext;
     private SQLiteDatabase mDb;
-    private DataBaseHelper mDbHelper;
+    private YoloDataBaseHelper mDbHelper;
 
     public DataAdapter(Context context) {
         this.mContext = context;
-        mDbHelper = new DataBaseHelper(mContext);
+        mDbHelper = new YoloDataBaseHelper(mContext);
     }
 
     public DataAdapter createDatabase() throws SQLException {
@@ -200,6 +203,44 @@ public class DataAdapter {
 
             }
             return sealist;
+        }
+        catch (SQLException mSQLException) {
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+    public List YoloResultView(String afterName) {
+        try {
+
+            // Table 이름 -> antpool_bitcoin 불러오기
+            String sql = "select * from SPECIES where field2 ="+"'"+afterName+"'";
+
+            // 모델 넣을 리스트 생성
+            List freshlist = new ArrayList();
+
+            // TODO : 모델 선언
+            Fish_Detail_InfoList freshwater = null;
+
+            Cursor mCur = mDb.rawQuery(sql, null);
+            if (mCur!=null) {
+                // 칼럼의 마지막까지
+                while( mCur.moveToNext() ) {
+
+                    // TODO : 커스텀 모델 생성
+                    freshwater = new Fish_Detail_InfoList();
+
+                    // TODO : Record 기술
+                    // id, name, account, privateKey, secretKey, Comment
+                    freshwater.setFish_name(mCur.getString(1));
+                    freshwater.setDistribution(mCur.getString(2));
+                    freshwater.setHabitat(mCur.getString(3));
+
+                    // 리스트에 넣기
+                    freshlist.add(freshwater);
+                }
+
+            }
+            return freshlist;
         }
         catch (SQLException mSQLException) {
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
