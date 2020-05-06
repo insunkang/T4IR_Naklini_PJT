@@ -8,7 +8,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bait"/>>
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/bait"/>
 
 </FrameLayout>

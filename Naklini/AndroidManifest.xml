@@ -34,8 +34,8 @@
         <activity android:name=".nofish.activity.NoFishData" />
         <activity android:name=".map.weather"/>
         <activity android:name=".map.map"/>
-        <activity android:name=".pointdetail.Fish_Detail_Info_Activity"/>
         <activity android:name=".pointdetail.Point_Info_Activity"/>
+        <activity android:name=".pointdetail.Fish_Detail_Info_Activity"/>
         <activity android:name=".nofish.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
