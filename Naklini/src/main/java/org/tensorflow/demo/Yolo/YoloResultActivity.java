@@ -2,7 +2,6 @@ package org.tensorflow.demo.Yolo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +54,7 @@ public class YoloResultActivity extends AppCompatActivity {
         yoloName.setText(lists.get(0).getName());
         yoloField.setText(lists.get(0).getDist());
         yoloHomeTown.setText(lists.get(0).getLiving());
+
     }
 
 

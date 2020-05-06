@@ -231,6 +231,7 @@ public class DataAdapter {
 
                     // TODO : Record 기술
                     // id, name, account, privateKey, secretKey, Comment
+
                     freshwater.setName(mCur.getString(1));
                     freshwater.setDist(mCur.getString(2));
                     freshwater.setLiving(mCur.getString(3));

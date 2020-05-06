@@ -2,7 +2,6 @@ package org.tensorflow.demo.pointdetail;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.GridLayout;
 
 public class Species implements Parcelable {
     int _id;
@@ -11,6 +10,7 @@ public class Species implements Parcelable {
     String living;
     String size;
     String picture;
+
 
     public Species(){
 
@@ -23,6 +23,7 @@ public class Species implements Parcelable {
     public void set_id(int _id) {
         this._id = _id;
     }
+
 
     public String getName() {
         return name;
@@ -48,21 +49,6 @@ public class Species implements Parcelable {
         this.living = living;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     public Species(int _id, String name){
         this._id = _id;
