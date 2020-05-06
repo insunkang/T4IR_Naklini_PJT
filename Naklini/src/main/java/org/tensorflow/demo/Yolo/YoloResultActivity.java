@@ -2,7 +2,6 @@ package org.tensorflow.demo.Yolo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.tensorflow.demo.R;
 import org.tensorflow.demo.map.db.DataAdapter;
-import org.tensorflow.demo.pointdetail.Fish_Detail_InfoList;
+import org.tensorflow.demo.pointdetail.Species;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import java.util.List;
 
 
 public class YoloResultActivity extends AppCompatActivity {
-    List<Fish_Detail_InfoList> lists ;
+    List<Species> lists ;
     DataAdapter dataAdapter;
 
     ImageView yoloImage;
@@ -52,10 +51,10 @@ public class YoloResultActivity extends AppCompatActivity {
         lists = dataAdapter.YoloResultView(afterName);
 
 
-        yoloName.setText(lists.get(0).getFish_name());
-        yoloField.setText(lists.get(0).getDistribution());
-        yoloHomeTown.setText(lists.get(0).getHabitat());
-        Log.d("test",lists.get(0).getFish_name());
+        yoloName.setText(lists.get(0).getName());
+        yoloField.setText(lists.get(0).getDist());
+        yoloHomeTown.setText(lists.get(0).getLiving());
+
     }
 
 
