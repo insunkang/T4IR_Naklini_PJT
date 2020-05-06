@@ -474,6 +474,13 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         }
     }
 
+    // TODO: 멀티캠퍼스로 이동
+    public void setPosition(){
+        LatLng myloc = new LatLng(37.5013395,127.0393345);
+        // 카메라가 이동할때 애니메이션이 적용
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(myloc,8));
+    }
+
     public void onboard(){
         map.clear();
         DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
@@ -489,7 +496,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
 
         //String latitude = onboardList.get(1).getLatitude(); // 위도
         //String longitude = onboardList.get(1).getLongitude(); // 경도
-
+        setPosition();
         for (int i=1; i<onboardList.size(); i++){
             String latitude2 = onboardList.get(i).getLatitude();
             String longitude2 = onboardList.get(i).getLongitude();
@@ -538,7 +545,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
 
         //String latitude = rockList.get(1).getLatitude(); // 위도
         //String longitude = rockList.get(1).getLongitude(); // 경도
-
+        setPosition();
         for (int i=1; i<rockList.size(); i++){
             String latitude2 = rockList.get(i).getLatitude();
             String longitude2 = rockList.get(i).getLongitude();
@@ -573,11 +580,13 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     public void fresh(){
         AsyncTask asyncTask = new AsyncTask();
         asyncTask.execute();
+        setPosition();
     }
 
     public void sea(){
         AsyncTask2 asyncTask2 = new AsyncTask2();
         asyncTask2.execute();
+        setPosition();
     }
 
     class AsyncTask extends android.os.AsyncTask<String,MarkerOptions,String>{
