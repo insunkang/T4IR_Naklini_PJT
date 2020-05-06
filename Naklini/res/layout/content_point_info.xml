@@ -45,7 +45,7 @@
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:tint="#000000"
+                    android:src="@drawable/icon"
                     android:tooltipText="날씨 아이콘 넣어야함" />
 
                 <LinearLayout
@@ -108,7 +108,8 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:fontFamily="@font/bmjua"
-                            android:text="지역 이름 넣기"
+                            android:gravity="center"
+                            android:text="날씨 보러가기"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="#000000"
                             android:textSize="15sp" />
@@ -153,6 +154,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/fish_detail"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -181,7 +183,6 @@
                             android:textSize="15sp" />
 
                         <ImageView
-                            android:id="@+id/fish_detail"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"

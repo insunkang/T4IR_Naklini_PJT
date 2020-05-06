@@ -111,16 +111,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
         detail_intent = new Intent(org.tensorflow.demo.map.map.this, Point_Info_Activity.class);
 
     }
-    // 지역으로 보기 버튼으로 포인트 불러온 후 '뒤로가기 버튼' 누르면 다시 리스트뷰 페이지로
-    // 분류 보기 옵션으로 불러온 후 '뒤로가기 버튼' 누르면 메인 화면으로
-    @Override
-    public void onBackPressed() {
-        if(!returnCategory.equals("")){
-            callPoint1();
-        }else{
-            super.onBackPressed();
-        }
-    }
+
     public void callPoint1(){
         // Point1.java 부르기
         intent = new Intent(org.tensorflow.demo.map.map.this, Point1.class);
